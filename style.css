@@ -1,0 +1,95 @@
+:root {
+    --ff: "Courgette", cursive;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: var(--ff);
+}
+
+header {
+    margin: 1.5rem 3rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.nav-button {
+    border: none;
+    background-color: rgb(252, 192, 192);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    display: none;
+}
+.nav-button:hover {
+    transform: scale(1.03);
+    border: 1px solid #717171;
+}
+.nav-button:active {
+    border: 2px solid #000;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: clamp(1rem, 3vw, 3rem);
+}
+.nav-item {
+    font-size: clamp(1rem, 1.5vw, 2rem);
+}
+.nav-link {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-button {
+        display: block;
+    }
+    .nav-list {
+        --animation-speed:cubic-bezier(1, 0, 0.58, 1);
+        --animation-time:300ms;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        visibility: hidden;
+        position: absolute;
+        opacity: 0;
+        border-radius: 10px;
+        background-color: rgb(252, 192, 192);
+        transform: translate(0, 2rem) scale(0); ;
+        transform-origin: top right;
+        transition: transform var(--animation-time) var(--animation-speed), visibility var(--animation-time) var(--animation-speed);
+        padding: 10px 0;
+    }
+    .nav-button[opened]{
+        background-color: rgb(249, 176, 176);
+        
+    }
+    .nav-button[opened] + .nav-list {
+        
+        /* transform: */
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 2rem) scale(1); 
+        transition: transform var(--animation-time) var(--animation-speed), visibility var(--animation-time) var(--animation-speed);
+
+    }
+    
+    .nav-item {
+        padding: 0.5rem 3rem 0.5rem 1rem;
+        min-width: 200px;
+    }
+    .nav-item:hover{
+        background-color: rgb(249, 176, 176);
+        text-decoration: underline;
+    }
+    
+}
