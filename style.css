@@ -91,7 +91,6 @@ header {
         opacity: 1;
         visibility: visible;
         transform: scale(1); 
-        transition: transform var(--animation-time) var(--animation-speed), visibility var(--animation-time) var(--animation-speed);
 
     }
     

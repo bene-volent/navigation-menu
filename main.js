@@ -4,11 +4,19 @@ const NAVIGATION = {
 }
 NAVIGATION.navButton.addEventListener("click", () => {
     NAVIGATION.navButton.toggleAttribute('opened')
-    NAVIGATION.navButton.innerHTML = NAVIGATION.navButton.hasAttribute('opened')?'close':'menu'
+    if (NAVIGATION.navButton.hasAttribute('opened')){
+        NAVIGATION.navButton.innerHTML = 'close'
+        NAVIGATION.navButton.toggleAttribute("aria-hidden",false)
+    }
+    else{
+            NAVIGATION.navButton.innerHTML = 'menu'
+            NAVIGATION.navButton.toggleAttribute("aria-hidden",true)
+    }
 });
 
 document.addEventListener('click',(e)=>{
-    if (e.target!=NAVIGATION.navButton && NAVIGATION.navButton.hasAttribute("opened") && e.target!=NAVIGATION.navList){
+    
+    if (e.target!=NAVIGATION.navButton && NAVIGATION.navButton.hasAttribute("opened") && (e.target!=NAVIGATION.navList )){
         NAVIGATION.navButton.toggleAttribute("opened")
     }
 })
