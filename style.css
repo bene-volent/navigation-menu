@@ -1,5 +1,9 @@
 :root {
     --ff: "Courgette", cursive;
+    --bg-400:#0e91a1;
+    --bg-500:#146c78;
+    --bg-100:#e3feff;
+    --fg-400:#fff;
 }
 * {
     padding: 0;
@@ -7,10 +11,12 @@
 }
 body {
     font-family: var(--ff);
+    background-color: var(--bg-100);
 }
 
 header {
-    margin: 1.5rem 3rem;
+    padding: 1.5rem 3rem;
+    background-color: #0e91a1;
 }
 
 .navbar {
@@ -21,7 +27,7 @@ header {
 
 .nav-button {
     border: none;
-    background-color: rgb(252, 192, 192);
+    background-color: var(--bg-400);
     width: 2rem;
     height: 2rem;
     border-radius: 5px;
@@ -29,10 +35,10 @@ header {
 }
 .nav-button:hover {
     transform: scale(1.03);
-    border: 1px solid #717171;
+    border: 1px solid #eee;
 }
 .nav-button:active {
-    border: 2px solid #000;
+    border: 2px solid var(--fg-400);
 }
 
 .nav-list {
@@ -43,34 +49,40 @@ header {
 .nav-item {
     font-size: clamp(1rem, 1.5vw, 2rem);
 }
+.nav-item:hover{
+    text-decoration: underline;
+
+}
 .nav-link {
     text-decoration: none;
-    color: black;
+    color: var(--fg-400);
     cursor: pointer;
 }
 
 @media (max-width: 768px) {
     .nav-button {
         display: block;
+        color: var(--fg-400);
     }
     .nav-list {
         --animation-speed:cubic-bezier(1, 0, 0.58, 1);
         --animation-time:300ms;
-        display: flex;
         flex-direction: column;
         gap: 0;
         visibility: hidden;
         position: absolute;
         opacity: 0;
+        top: 2.5rem;
         border-radius: 10px;
-        background-color: rgb(252, 192, 192);
-        transform: translate(0, 2rem) scale(0); ;
+        border: 2px solid var(--fg-400);
+        background-color:var(--bg-400);
+        transform:  scale(0); ;
         transform-origin: top right;
         transition: transform var(--animation-time) var(--animation-speed), visibility var(--animation-time) var(--animation-speed);
         padding: 10px 0;
     }
     .nav-button[opened]{
-        background-color: rgb(249, 176, 176);
+        background-color: var(--bg-500);
         
     }
     .nav-button[opened] + .nav-list {
@@ -78,7 +90,7 @@ header {
         /* transform: */
         opacity: 1;
         visibility: visible;
-        transform: translate(0, 2rem) scale(1); 
+        transform: scale(1); 
         transition: transform var(--animation-time) var(--animation-speed), visibility var(--animation-time) var(--animation-speed);
 
     }
@@ -88,8 +100,7 @@ header {
         min-width: 200px;
     }
     .nav-item:hover{
-        background-color: rgb(249, 176, 176);
-        text-decoration: underline;
+        background-color: var(--bg-500);
     }
     
 }
