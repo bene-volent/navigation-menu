@@ -25,3 +25,9 @@ document.addEventListener("click", (e) => {
         handleNavigationButtonEvent();
     }
 });
+
+window.addEventListener('resize',()=>{
+    if (window.innerWidth>768){
+        if (NAVIGATION.navButton.hasAttribute("opened"))handleNavigationButtonEvent()
+    }
+})

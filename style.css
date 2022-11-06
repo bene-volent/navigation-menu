@@ -4,6 +4,8 @@
     --bg-500:#146c78;
     --bg-100:#e3feff;
     --fg-400:#fff;
+    --nav-animation-speed:cubic-bezier(1, 0, 0.58, 1);
+    --nav-animation-time:300ms;
 }
 * {
     padding: 0;
@@ -63,10 +65,11 @@ header {
     .nav-button {
         display: block;
         color: var(--fg-400);
+        transition : transform var(--nav-animation-time) var(--nav-animation-speed)
+
     }
     .nav-list {
-        --animation-speed:cubic-bezier(1, 0, 0.58, 1);
-        --animation-time:300ms;
+
         flex-direction: column;
         gap: 0;
         visibility: hidden;
@@ -78,12 +81,12 @@ header {
         background-color:var(--bg-400);
         transform:  scale(0); ;
         transform-origin: top right;
-        transition: transform var(--animation-time) var(--animation-speed), visibility var(--animation-time) var(--animation-speed);
+        transition: transform var(--nav-animation-time) var(--nav-animation-speed), visibility var(--nav-animation-time) var(--nav-animation-speed);
         padding: 10px 0;
     }
     .nav-button[opened]{
         background-color: var(--bg-500);
-        
+        transform :rotate(90deg);
     }
     .nav-button[opened] + .nav-list {
         
